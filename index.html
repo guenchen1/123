@@ -80,5 +80,58 @@
     <div class="cat-img" id="p">0</div>
 </div>
 
+<script>
+
+    // 用 javascript 預載張嘴圖片 op.png
+    const img = new Image();
+    img.src = 'imgs/op.png';
+
+    // 1. 計數器初始化
+    let count = 0;
+
+    //取得 id 為 p 的元素
+    const catImg = document.getElementById('p');
+
+    //將 count 設定給 catImg
+    catImg.textContent = count;
+
+    // 2. function 計數器累加
+    function add() {
+        count++;
+    }
+
+    //註冊滑鼠按下的事件 add
+    document.addEventListener('mousedown', function () {
+        //呼叫 add
+        add();
+        const audio = new Audio('pops/pop1.mp3');
+        audio.play();
+        //將 count 設定給 catImg
+        catImg.textContent = count;
+
+        catImg.id = 'op';
+    });
+    // 除了滑鼠，也可以用鍵盤互動
+    document.addEventListener('keydown', function () {
+        add();
+        const audio = new Audio('pops/pop1.mp3');
+        audio.play();
+        catImg.textContent = count;
+        catImg.id = 'op';
+    });
+
+    //放開回原圖片
+    document.addEventListener('mouseup', function () {
+        catImg.id = 'p';
+    });
+    // 除了滑鼠，也可以用鍵盤互動
+    document.addEventListener('keyup', function () {
+        catImg.id = 'p';
+    });
+
+
+
+</script>
+
 </body>
 </html>
